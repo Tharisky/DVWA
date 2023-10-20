@@ -1,7 +1,7 @@
 pipeline {
     agent any 
 	environment {
-		def scannerHome = tool 'sonarscanner';
+		def scannerHome = tool 'sonar-scanner';
 	
 		
 	
