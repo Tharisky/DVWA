@@ -25,13 +25,13 @@ pipeline {
 	  }
 
 
-      stage ("Dynamic Analysis - OWASP ZAP") {
+     	 stage ("Dynamic Analysis - OWASP ZAP") {
 		  steps {
 		  	sh "docker run -t owasp/zap2docker-stable zap-baseline.py -t https://aopartnersdev.com.ng/devsecops/ || true"
 		 	 }
 	      }
-
-	  stage('GitGuardian Scan') {
+	    
+	stage('GitGuardian Scan') {
             agent {
                 docker { image 'gitguardian/ggshield:latest' }
             }
@@ -42,6 +42,7 @@ pipeline {
                 sh 'ggshield secret scan ci'
             }
         }
+
 
 	
 
