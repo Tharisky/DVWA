@@ -34,7 +34,7 @@ pipeline {
 	    
 	stage('Secrets Management-GitGuardian Scan') {
             agent {
-                docker { image 'gitguardian/ggshield:latest'
+                any { image 'gitguardian/ggshield:latest'
 		       args '-i --entrypoint='}
             }
             steps {
