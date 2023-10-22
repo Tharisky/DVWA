@@ -12,7 +12,16 @@ pipeline {
 		    checkout scm
 		  }
 	  }
-	    
+	
+	    stage('Secrets Management-GitGuardian Scan') {
+            agent {
+                docker { image 'gitguardian/ggshield:latest'
+		       args '-i --entrypoint='}
+            }
+            steps {
+                sh 'ggshield secret scan ci'
+            }
+        } 
 
 	  
 
@@ -31,19 +40,7 @@ pipeline {
 		 	 }
 	      }
 	    
-	stage('GitGuardian Scan') {
-            agent {
-                docker { image 'gitguardian/ggshield:latest' }
-            }
-            environment {
-                GITGUARDIAN_API_KEY = credentials('john shield')
-            }
-            steps {
-                sh 'ggshield secret scan ci'
-            }
-        }
-
-
+	
 	
 
 	    
