@@ -31,17 +31,17 @@ pipeline {
 		 	 }
 	      }
 
-	
-       stage('Secrets Management-GitGuardian Scan') {
+	  stage('GitGuardian Scan') {
             agent {
-                docker { image 'gitguardian/ggshield:latest'
-		       args '-i --entrypoint='}
+                docker { image 'gitguardian/ggshield:latest' }
+            }
+            environment {
+                GITGUARDIAN_API_KEY = credentials('john shield')
             }
             steps {
                 sh 'ggshield secret scan ci'
             }
-        } 
-    
+        }
 
 	
 
