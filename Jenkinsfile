@@ -1,5 +1,5 @@
 pipeline {
-     agent any   or agent label 'my-defined-label' or agent none
+    agent any 
 	environment {
 		def scannerHome = tool 'Sonar-scanner';
 		GITGUARDIAN_API_KEY = credentials('GITGUARDIAN_API_KEY')
