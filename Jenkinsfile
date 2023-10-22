@@ -33,7 +33,9 @@ pipeline {
 
 	
         stage('GitGuardian Scan') {
-           
+           agent {
+		   docker { image 'gitguardian/ggshield:latest' }
+		 }
             environment {
                 GITGUARDIAN_API_KEY = credentials('gitguardian-api-key')
             }
